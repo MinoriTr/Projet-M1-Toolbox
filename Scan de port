@@ -1,1 +1,20 @@
+#!/bin/bash
+
+# Demander à l'utilisateur de saisir l'adresse IP cible
+read -p "Entrez l'adresse IP cible : " target_ip
+
+# Valider l'adresse IP saisie par l'utilisateur
+if ! [[ $target_ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    exit 1
+fi
+
+echo "Adresse IP valide : $target_ip"
+
+# Tentative de connexion à tous les ports de 1 à 1000
+if nc -zvw1 $target_ip 1-1000 2>/dev/null | grep succeeded; then
+    echo "Au moins un port est ouvert."
+else
+    echo "Tous les ports sont fermés."
+fi
 
