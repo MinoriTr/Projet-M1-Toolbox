@@ -1,0 +1,77 @@
+#### Changer l'IP cible ####
+changer_ip_cible() {
+    read -p "Entrez la nouvelle adresse IP cible : " ip_cible
+
+    # Valide l'adresse IP saisie par l'utilisateur
+    if ! [[ $ip_cible =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+        return
+    fi
+
+    # Effectuer l'exploration sur la nouvelle IP cible
+    exploration
+}
+
+#### Menu principal ####
+afficher_menu_principal() {
+    echo -e "${jaune}### TOOLBOX ###${reset}"
+    echo "1. Découverte de ports et Services"
+    echo "2. Découverte de vulnérabilités"
+    echo "3. Analyse de mot de passe"
+    echo "4. Test d'authentification"
+    echo "5. Exploitation des vulnérabilités avec Metasploit"
+    echo "6. Changer l'IP cible"
+    echo "7. Générer un rapport PDF"
+    echo "8. Quitter"
+    echo
+    read -p "Choisissez une option : " choix
+}
+
+echo -e "${bleu}Bienvenue dans la Toolbox.${reset}"
+echo -e "${rouge}Cet outil à pour but du pentensting et ne doit surtout pas être utilisé dans le cadre d'actions illégales ! Nous ne sommes pas responsable d'une utilisation à des fins malveillantes.${reset}"
+echo -e "Veuillez commencer par renseigner l'adresse cible."
+read -p "Entrez l'adresse IP cible : " ip_cible
+
+# Valide l'adresse IP saisie par l'utilisateur
+
+if ! [[ $ip_cible =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    return
+fi
+
+exploration
+
+while true; do
+    afficher_menu_principal
+
+    case $choix in
+        1)
+            decouverte_ports_services
+            ;;
+        2)
+            decouverte_vulnerabilites
+            ;;
+        3)
+            analyse_mot_de_passe
+            ;;
+        4)
+            test_authentification
+            ;;
+        5)
+            exploitation_metasploit
+            ;;
+        6)
+            changer_ip_cible
+            ;;
+        7)
+            generer_rapport_pdf
+            ;;
+        8)
+            echo "Quitter le script."
+            exit 0
+            ;;
+        *)
+            echo "Choix invalide. Veuillez réessayer."
+            ;;
+    esac
+done
