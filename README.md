@@ -1,5 +1,5 @@
 Bienvenue dans la Toolbox
-Cet outil est prévue à des fins de pentensting et ne doit surtout pas être utilisé dans le cadre d'actions illégale !
+Cet outil est prévu à des fins de pentensting et ne doit surtout pas être utilisé dans le cadre d'actions illégale !
 
 Tout d'abord téléchargez le fichier "Toolbox.sh" ainsi que le fichier dictionnaire, les deux fichiers doivent être placés dans le même répertoire
 
