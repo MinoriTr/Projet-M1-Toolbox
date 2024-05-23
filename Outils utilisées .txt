@@ -1,0 +1,17 @@
+Outils utilisées 
+
+Tous les outils employées ont été utilisées sur parrot security, cet OS est basée sur les distributions Debian et est par conséquents similaire a kali linux. 
+
+parrot-security6
+nmap 7.94+git20230807.3be01efb1+dfsg-2+parrot1 amd64
+john 1.9.0-Jumbo-1+git20211102-0parrot1 amd64
+fichier dictionnaire
+ssh 1:9.2p1-2+deb12u2
+sshpass 1.09-1+b1 amd64
+python3 3.11.2-1+b1 amd64
+python3-pip 23.0.1+dfsg-1 all
+metasploit-framework 6.4.10~20240520102558.git.6.a7e39a6~1rapid7-1 amd64
+fdpdf2-2.7.9-py2.py3-none-any.whl
+
+
+
