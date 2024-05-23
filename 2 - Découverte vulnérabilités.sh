@@ -1,12 +1,21 @@
-#!/bin/bash
+                                       #### 2 - Découverte de vulnérabilités ####
 
-# 2 - Découverte vulnérabilités
-# Extrait la liste des ports ouverts
-open_ports=$(echo "$nmap_cmd" | grep succeeded | awk '{print $5}' | cut -d'/' -f1)
 
-# Utilise Nmap pour rechercher les vulnérabilités sur les ports ouverts
-echo "Recherche des vulnérabilités connues sur les ports ouverts :"
-nmap -sV --script vulners -p 1-1024 $open_ports $ip_cible
-
-# Supprime le fichier temporaire
-# rm scan_result.txt # Il n'y a pas de fichier scan_result.txt dans ce code
+decouverte_vulnerabilites() {
+    echo -e "${bleu}#### Découverte de vulnérabilités ####${reset}"
+    
+    # Récupère les infos de la liste des ports et affiche leurs vulnérabilités
+    open_ports=$(echo "$nmap_cmd" | grep "open" | awk '{print $1}' | cut -d'/' -f1 | tr '\n' ',' | sed 's/,$//')
+    
+    echo "Recherche des vulnérabilités connues sur les ports ouverts :"
+    vuln_scan=$(nmap --script vulners -sV -p$open_ports $ip_cible)
+    
+    vuln_info=$(echo "$vuln_scan" | grep "|_" -A 1)
+    
+    if [ -n "$vuln_info" ]; then
+        echo "Voici les vulnérabilités trouvées :"
+        echo "$vuln_info"
+    else
+        echo "Aucune vulnérabilité connue trouvée sur les ports ouverts."
+    fi
+}
