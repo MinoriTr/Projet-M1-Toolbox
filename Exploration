@@ -1,0 +1,23 @@
+                                                #### Exploration ####
+
+
+exploration() {
+    echo -e "${bleu}#### Exploration ####${reset}"
+    
+
+    exploration_cmd=$(nmap -O -sS $ip_cible)
+    
+#affiche seulement les informations essentielles
+    nom_machine=$(echo "$exploration_cmd" | grep "Nmap scan report for" | awk '{print $5}')
+    os_machine=$(echo "$exploration_cmd" | grep "OS details" | awk -F': ' '{print $2}')
+    domaine_machine=$(echo "$exploration_cmd" | grep "Nmap scan report for" | awk '{print $6}')
+
+#affiche "Inconnu" si les informations sur la machine ne sont pas trouvées
+    nom_machine=${nom_machine:-Inconnu}
+    os_machine=${os_machine:-Inconnu}
+    domaine_machine=${domaine_machine:-Inconnu}
+
+    echo "Nom de la machine : $nom_machine"
+    echo "Type de l'OS : $os_machine"
+    echo "Nom du domaine : $domaine_machine"
+}
