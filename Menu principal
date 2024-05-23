@@ -27,7 +27,19 @@ afficher_menu_principal() {
     read -p "Choisissez une option : " choix
 }
 
-echo -e "${bleu}Bienvenue dans la Toolbox.${reset}"
+echo -e "${bleu}"
+echo " ██████╗  █████╗ ██████╗ ███████╗██████╗ ██╗███╗   ██╗ ██████╗ "
+echo "██╔════╝ ██╔══██╗██╔══██╗██╔════╝██╔══██╗██║████╗  ██║██╔════╝ "
+echo "██║  ███╗███████║██████╔╝█████╗  ██████╔╝██║██╔██╗ ██║██║  ███╗"
+echo "██║   ██║██╔══██║██╔══██╗██╔══╝  ██╔══██╗██║██║╚██╗██║██║   ██║"
+echo "╚██████╔╝██║  ██║██║  ██║███████╗██║  ██║██║██║ ╚████║╚██████╔╝"
+echo " ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝ "
+echo ""
+echo -e "${jaune}By MINORI Tristan${reset}"
+echo ""
+
+
+
 echo -e "${rouge}Cet outil à pour but du pentensting et ne doit surtout pas être utilisé dans le cadre d'actions illégales ! Nous ne sommes pas responsable d'une utilisation à des fins malveillantes.${reset}"
 echo -e "Veuillez commencer par renseigner l'adresse cible."
 read -p "Entrez l'adresse IP cible : " ip_cible
